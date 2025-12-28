@@ -59,7 +59,8 @@
         },
         "employer_sector": {
           "type": "string",
-          "description": "Sector/industry of the employer (e.g., 'Manufacturing', 'Services', 'Agriculture', 'IT/ITES')."
+          "description": "Sector/industry of the employer.",
+          "enum": ["Manufacturing", "Services", "Agriculture & Allied Activities", "Construction", "IT/ITES", "Banking & Finance", "Transportation & Logistics", "Public Sector / Government", "Education & Training", "Other"]
         },
         "ctc": {
           "type": "number",
@@ -82,6 +83,11 @@
       "type": "string",
       "format": "date",
       "description": "Date when the final assessment was conducted (YYYY‑MM‑DD)."
+    },
+    "trainer_qualification": {
+      "type": "string",
+      "description": "Highest qualification of the primary trainer for the course.",
+      "enum": ["NSQF Level 4", "NSQF Level 5", "Diploma", "Graduate", "Post Graduate", "Industry Expert", "Other"]
     }
   },
   "additionalProperties": false
