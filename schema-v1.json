@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "National Skill Development Data Standard (NSDDS) - Version 1",
+  "description": "Common data standard for reporting skill training outcomes across ITIs, PMKVY, and apprenticeship programs in India.",
+  "type": "object",
+  "required": [
+    "trainee_id",
+    "training_partner_id",
+    "course_code",
+    "course_name",
+    "assessment_score",
+    "certification_status",
+    "placement_status"
+  ],
+  "properties": {
+    "trainee_id": {
+      "type": "string",
+      "description": "Unique identifier for the trainee, as issued by the training provider or a central registry.",
+      "minLength": 1
+    },
+    "training_partner_id": {
+      "type": "string",
+      "description": "Unique identifier of the training partner (ITI, PMKVY center, private partner) as registered with NSDC/MSDE.",
+      "minLength": 1
+    },
+    "course_code": {
+      "type": "string",
+      "description": "Official course code as per the National Skills Qualification Framework (NSQF) or the training partner's own coding scheme.",
+      "minLength": 1
+    },
+    "course_name": {
+      "type": "string",
+      "description": "Human‑readable name of the course/trade.",
+      "minLength": 1
+    },
+    "assessment_score": {
+      "type": "number",
+      "description": "Final assessment score (percentage or grade points) obtained by the trainee.",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "certification_status": {
+      "type": "string",
+      "description": "Whether the trainee has been certified after assessment.",
+      "enum": ["Certified", "Not Certified", "Pending"]
+    },
+    "placement_status": {
+      "type": "string",
+      "description": "Current placement outcome of the trainee after completion of training.",
+      "enum": ["Placed", "Self-Employed", "Seeking", "Not Seeking", "Further Education"]
+    },
+    "placement_details": {
+      "type": "object",
+      "description": "Additional details about placement, required when placement_status is 'Placed'.",
+      "properties": {
+        "employer_name": {
+          "type": "string",
+          "description": "Name of the employer/organization where the trainee is placed."
+        },
+        "employer_sector": {
+          "type": "string",
+          "description": "Sector/industry of the employer (e.g., 'Manufacturing', 'Services', 'Agriculture', 'IT/ITES')."
+        },
+        "ctc": {
+          "type": "number",
+          "description": "Cost to Company (CTC) in Indian Rupees per annum."
+        },
+        "date_of_joining": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the trainee joined the employer (YYYY‑MM‑DD)."
+        }
+      },
+      "required": ["employer_sector", "ctc"]
+    },
+    "training_completion_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the trainee completed the training (YYYY‑MM‑DD)."
+    },
+    "assessment_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the final assessment was conducted (YYYY‑MM‑DD)."
+    }
+  },
+  "additionalProperties": false
+}
